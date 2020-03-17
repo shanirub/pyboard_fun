@@ -1,13 +1,15 @@
 # main.py -- put your code here!
 import pyb
 
-green = pyb.LED(2)
-blue = pyb.LED(4)
+leds = [pyb.LED(i) for i in range(1,5)]
+
+n = 0
 
 while True:
-    green.toggle()
-    pyb.delay(1000)
-    blue.toggle()
-    pyb.delay(500)
+    n = (n + 1) % 4
+    leds[n].toggle()
+    pyb.delay(50)
 
     
+
+

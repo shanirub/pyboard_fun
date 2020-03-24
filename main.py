@@ -2,16 +2,17 @@
 import pyb
 
 accel = pyb.Accel()
-light = pyb.LED(3)
+light = pyb.LED(4)
+light.on()
+intensity = 0
 
 SENSITIVITY = 3
 
 while True:
     x = accel.x()
     if abs(x) > SENSITIVITY:
-        light.on()
-    else:
-        light.off()
+        intensity = round(x * 8.5) % 255
+        light.intensity(intensity)
 
     pyb.delay(100)
 
